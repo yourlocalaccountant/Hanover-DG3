@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101110">
+  <title>Hanover DG3</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main aria-label="Hanover DG3 destination system">
+    <section class="signs" aria-label="Destination displays">
+      <canvas id="front" role="img" aria-label="Front destination display"></canvas>
+      <div class="secondary-signs">
+        <canvas id="side" role="img" aria-label="Side destination display"></canvas>
+        <canvas id="rear" role="img" aria-label="Rear destination display"></canvas>
+      </div>
+    </section>
+    <section class="controller-area" aria-label="Driver's controller">
+      <div id="controller" class="controller">
+        <svg class="controller-skin" viewBox="0 0 380 204" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="metal" x2="0" y2="1"><stop stop-color="#797a78"/><stop offset="1" stop-color="#4e504e"/></linearGradient>
+            <linearGradient id="case" x2="0" y2="1"><stop stop-color="#242526"/><stop offset=".5" stop-color="#0d0e10"/><stop offset="1" stop-color="#191a1c"/></linearGradient>
+            <linearGradient id="grip" x2=".7" y2="1"><stop stop-color="#555658"/><stop offset=".5" stop-color="#252628"/><stop offset="1" stop-color="#101113"/></linearGradient>
+            <g id="screw"><circle r="4" fill="#101113" stroke="#343538"/><path d="M-2-2 2 2 M2-2-2 2" stroke="#444548" stroke-width=".8"/></g>
+          </defs>
+          <path d="M48 2 313 4 337 29H37Z" fill="url(#metal)" stroke="#8a8b87" stroke-width=".8"/>
+          <rect x="2" y="28" width="376" height="174" rx="21" fill="url(#case)" stroke="#424347"/>
+          <rect x="29" y="30" width="322" height="171" rx="3" fill="#18191b" stroke="#060709"/>
+          <rect x="33" y="45" width="314" height="140" fill="#55555f" stroke="#292a30"/>
+          <rect x="62" y="51" width="256" height="77" fill="#252631"/>
+          <circle cx="16" cy="114" r="14" fill="url(#grip)" stroke="#090a0c"/>
+          <circle cx="364" cy="114" r="14" fill="url(#grip)" stroke="#090a0c"/>
+          <use href="#screw" x="43" y="38"/><use href="#screw" x="338" y="38"/>
+          <use href="#screw" x="43" y="194"/><use href="#screw" x="338" y="194"/>
+          <g fill="#e62c37"><path d="m41 138 5-5v10Z M49 131h4v14h-4Z M56 133l5 5-5 5Z"/><path d="m48 128 3-3 3 3-3 3Z m0 20 3-3 3 3-3 3Z"/></g>
+          <text x="64" y="144" fill="#f4f2e9" font-family="Arial, sans-serif" font-size="10" font-weight="800" textLength="50" lengthAdjust="spacingAndGlyphs">HANOVER</text>
+          <text x="118" y="144" fill="#e5e2dc" font-family="Arial, sans-serif" font-size="8">DG3</text>
+        </svg>
+        <canvas id="oled" class="oled" role="img" aria-label="Controller OLED screen"></canvas>
+        <button class="hardware-key key-fe" data-key="fe" aria-label="F/E: function and enter" title="F/E · Enter; hold for status"><span>F/E</span></button>
+        <button class="hardware-key key-left" data-key="left" aria-label="Left: next digit or back" title="Left · next digit / back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12 19 3v18Z"/></svg></button>
+        <button class="hardware-key key-up" data-key="up" aria-label="Up: increase or scroll up" title="Up · increase / previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 4 9 15H3Z"/></svg></button>
+        <button class="hardware-key key-down" data-key="down" aria-label="Down: decrease or scroll down" title="Down · decrease / next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 20 9-15H3Z"/></svg></button>
+        <span id="usb-socket" class="usb-socket" aria-hidden="true"></span>
+      </div>
+      <p id="controller-transcript" class="sr-only" role="status" aria-live="polite"></p>
+      <p class="sr-only">Use Enter, Left, Up and Down to operate the controller. Type a destination code after pressing F/E, then press F/E to confirm. P switches power. The default lock code is 0101.</p>
+    </section>
+  </main>
+  <script type="module" src="/src/app.mjs"></script>
+</body>
+</html>

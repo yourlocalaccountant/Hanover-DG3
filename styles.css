@@ -1,0 +1,74 @@
+:root {
+  color-scheme: dark;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #101110;
+  color: #eeeeea;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+main {
+  width: min(1060px, calc(100% - 64px));
+  min-height: 100svh;
+  margin: auto;
+  padding: 64px 0 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(36px, 5vh, 64px);
+}
+.signs { display: grid; gap: 40px; }
+.signs canvas { display: block; width: 100%; height: auto; min-width: 0; }
+.secondary-signs { display: grid; grid-template-columns: 3fr 1fr; gap: 32px; align-items: center; }
+.controller-area { display: grid; justify-items: center; }
+.controller { position: relative; width: min(600px, 100%); aspect-ratio: 380 / 204; isolation: isolate; }
+.controller-skin { display: block; width: 100%; height: 100%; pointer-events: none; user-select: none; }
+.oled { position: absolute; left: 17.1%; top: 26.47%; width: 66.32%; height: 34.31%; image-rendering: pixelated; }
+.hardware-key {
+  position: absolute;
+  top: 72.3%;
+  width: 8.45%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 30%, #fffdf1, #eee9d8 72%, #b8b5a9);
+  box-shadow: inset 0 1px 1px #fff, 0 1px 2px #242328;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.key-fe { left: 16.0%; }
+.key-left { left: 30.0%; }
+.key-up { left: 44.0%; }
+.key-down { left: 58.0%; }
+.hardware-key svg { width: 68%; height: 68%; fill: #292821; }
+.key-fe span { color: #b93d2f; font-family: Arial, sans-serif; font-weight: 700; font-size: clamp(12px, 2.6vw, 22px); font-style: italic; }
+.hardware-key::before { content: ''; position: absolute; inset: -7px; border-radius: inherit; }
+.hardware-key:hover { box-shadow: 0 0 0 2px #fff5ba80; }
+.hardware-key:active, .hardware-key.pressed { background: #c8c3b0; box-shadow: inset 0 2px 3px #6f6b5c; }
+.hardware-key:focus-visible { outline: 3px solid #ffe66a; outline-offset: 5px; }
+.usb-socket { position: absolute; left: 68.5%; top: 72%; width: 18%; height: 17%; pointer-events: none; border-radius: 5px; background: linear-gradient(155deg, #303137, #191a20); border: 2px solid #23242a; box-shadow: inset 0 2px 2px #44454a, 0 2px 3px #292a30; }
+.usb-socket::after { content: ''; position: absolute; right: -12%; top: 10%; width: 14%; height: 42%; border-radius: 0 4px 4px 0; background: #292a30; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+button, input { font: inherit; }
+dialog { width: min(540px, calc(100% - 32px)); max-height: 90svh; padding: 24px; border: 1px solid #71716a; border-radius: 5px; background: #272725; color: #eeeeea; }
+dialog::backdrop { background: #000a; }
+dialog h2 { margin: 0; font-size: 18px; }
+.dialog-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
+dialog button { padding: 9px 14px; border: 1px solid #8d8b7a; border-radius: 3px; background: #42413b; color: #fffce8; cursor: pointer; }
+dialog button:focus-visible, input:focus-visible { outline: 3px solid #ffe66a; outline-offset: 3px; }
+dialog label { display: flex; flex-direction: column; gap: 7px; font-size: 13px; }
+dialog input:not([type='checkbox']) { width: 100%; min-width: 0; padding: 9px; border: 1px solid #868679; border-radius: 2px; background: #151614; color: #eeeeea; }
+.editor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+dialog .check-label { flex-direction: row; align-items: center; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+#setting-error { color: #ffbcad; font-size: 13px; line-height: 1.5; }
+[hidden] { display: none !important; }
+@media (max-width: 600px) {
+  main { width: calc(100% - 32px); min-height: 100svh; padding: 36px 0; gap: 48px; }
+  .signs { gap: 26px; }
+  .secondary-signs { gap: 16px; }
+  .hardware-key::before { inset: -10px; }
+}
